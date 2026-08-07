@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RasoiPro — Restaurant Performance Dashboard</title>
+
+  <!-- Google Font: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ========== SIDEBAR ========== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <i class="fas fa-utensils"></i>
+      </div>
+      <div class="brand-text">
+        <h2>RasoiPro</h2>
+        <span>Analytics</span>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a href="#dashboard" class="nav-link active" data-section="dashboard">
+            <i class="fas fa-th-large"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#analytics" class="nav-link" data-section="analytics">
+            <i class="fas fa-chart-line"></i>
+            <span>Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a href="#orders" class="nav-link" data-section="orders">
+            <i class="fas fa-receipt"></i>
+            <span>Orders</span>
+          </a>
+        </li>
+        <li>
+          <a href="#customers" class="nav-link" data-section="customers">
+            <i class="fas fa-users"></i>
+            <span>Customers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#menu" class="nav-link" data-section="menu">
+            <i class="fas fa-book-open"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="#inventory" class="nav-link" data-section="inventory">
+            <i class="fas fa-boxes-stacked"></i>
+            <span>Inventory</span>
+          </a>
+        </li>
+        <li>
+          <a href="#reviews" class="nav-link" data-section="reviews">
+            <i class="fas fa-star"></i>
+            <span>Reviews</span>
+          </a>
+        </li>
+        <li>
+          <a href="#settings" class="nav-link" data-section="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-promo">
+        <i class="fas fa-crown"></i>
+        <p>Upgrade to Pro</p>
+        <span>Unlock advanced insights</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay for mobile sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="main-wrapper">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="header-title">
+          <h1>Dashboard</h1>
+          <p class="welcome-msg">Welcome back, <strong>Arjun</strong> 👋</p>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="search-bar" id="searchBar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search orders, dishes, customers..." id="searchInput" />
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="header-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+
+        <button class="header-btn notification-btn" aria-label="Notifications">
+          <i class="fas fa-bell"></i>
+          <span class="badge-dot"></span>
+        </button>
+
+        <div class="profile">
+          <div class="avatar">
+            <img src="https://ui-avatars.com/api/?name=Arjun+Sharma&background=FF7A00&color=fff&size=80" alt="Arjun Sharma" />
+          </div>
+          <div class="profile-info">
+            <span class="profile-name">Arjun Sharma</span>
+            <span class="profile-role">Manager</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-content" id="dashboard">
+      <!-- KPI Cards -->
+      <section class="kpi-section fade-in">
+        <div class="kpi-card" data-delay="0">
+          <div class="kpi-icon revenue">
+            <i class="fas fa-indian-rupee-sign"></i>
+          </div>
+          <div class="kpi-body">
+            <span class="kpi-label">Total Revenue</span>
+            <h3 class="kpi-value" data-target="1284500" data-prefix="₹">0</h3>
+            <div class="kpi-trend up">
+              <i class="fas fa-arrow-up"></i>
+              <span>+12.5%</span>
+              <small>vs last week</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-card" data-delay="100">
+          <div class="kpi-icon orders">
+            <i class="fas fa-shopping-bag"></i>
+          </div>
+          <div class="kpi-body">
+            <span class="kpi-label">Total Orders</span>
+            <h3 class="kpi-value" data-target="3842" data-prefix="">0</h3>
+            <div class="kpi-trend up">
+              <i class="fas fa-arrow-up"></i>
+              <span>+8.2%</span>
+              <small>vs last week</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-card" data-delay="200">
+          <div class="kpi-icon customers">
+            <i class="fas fa-user-friends"></i>
+          </div>
+          <div class="kpi-body">
+            <span class="kpi-label">Customers</span>
+            <h3 class="kpi-value" data-target="2156" data-prefix="">0</h3>
+            <div class="kpi-trend up">
+              <i class="fas fa-arrow-up"></i>
+              <span>+5.4%</span>
+              <small>vs last week</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-card" data-delay="300">
+          <div class="kpi-icon profit">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="kpi-body">
+            <span class="kpi-label">Net Profit</span>
+            <h3 class="kpi-value" data-target="421800" data-prefix="₹">0</h3>
+            <div class="kpi-trend up">
+              <i class="fas fa-arrow-up"></i>
+              <span>+15.3%</span>
+              <small>vs last week</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-card" data-delay="400">
+          <div class="kpi-icon rating">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="kpi-body">
+            <span class="kpi-label">Average Rating</span>
+            <h3 class="kpi-value" data-target="4.8" data-prefix="" data-decimal="1">0</h3>
+            <div class="kpi-trend up">
+              <i class="fas fa-arrow-up"></i>
+              <span>+0.3</span>
+              <small>vs last week</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-card" data-delay="500">
+          <div class="kpi-icon occupancy">
+            <i class="fas fa-chair"></i>
+          </div>
+          <div class="kpi-body">
+            <span class="kpi-label">Table Occupancy</span>
+            <h3 class="kpi-value" data-target="78" data-prefix="" data-suffix="%">0</h3>
+            <div class="kpi-trend down">
+              <i class="fas fa-arrow-down"></i>
+              <span>-2.1%</span>
+              <small>vs last week</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts Row 1 -->
+      <section class="charts-row fade-in" id="analytics">
+        <div class="card chart-card chart-wide">
+          <div class="card-header">
+            <div>
+              <h3>Revenue Trend</h3>
+              <p>Weekly revenue performance</p>
+            </div>
+            <div class="card-actions">
+              <button class="chip active">Week</button>
+              <button class="chip">Month</button>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3>Sales by Category</h3>
+              <p>Distribution overview</p>
+            </div>
+          </div>
+          <div class="chart-container chart-sm">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts Row 2 -->
+      <section class="charts-row fade-in">
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3>Top Selling Dishes</h3>
+              <p>Most ordered items this week</p>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="dishesChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3>Payment Methods</h3>
+              <p>How customers pay</p>
+            </div>
+          </div>
+          <div class="chart-container chart-sm">
+            <canvas id="paymentChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Orders + Peak Hours -->
+      <section class="content-row fade-in" id="orders">
+        <div class="card table-card">
+          <div class="card-header">
+            <div>
+              <h3>Latest Orders</h3>
+              <p>Real-time order activity</p>
+            </div>
+            <button class="btn-outline">View All</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Food Item</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <!-- Populated by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card chart-card peak-card">
+          <div class="card-header">
+            <div>
+              <h3>Peak Order Hours</h3>
+              <p>Busy periods today</p>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="peakHoursChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Menu -->
+      <section class="menu-section fade-in" id="menu">
+        <div class="section-header">
+          <div>
+            <h3>Popular Menu</h3>
+            <p>Top performing dishes this month</p>
+          </div>
+          <button class="btn-primary">
+            <i class="fas fa-plus"></i> Add Dish
+          </button>
+        </div>
+        <div class="menu-grid" id="menuGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Inventory + Reviews -->
+      <section class="bottom-row fade-in">
+        <!-- Inventory Status -->
+        <div class="card inventory-card" id="inventory">
+          <div class="card-header">
+            <div>
+              <h3>Inventory Status</h3>
+              <p>Stock levels overview</p>
+            </div>
+            <button class="btn-outline">Restock</button>
+          </div>
+          <div class="inventory-list" id="inventoryList">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Customer Reviews -->
+        <div class="card reviews-card" id="reviews">
+          <div class="card-header">
+            <div>
+              <h3>Customer Reviews</h3>
+              <p>Feedback summary</p>
+            </div>
+          </div>
+          <div class="reviews-summary">
+            <div class="review-stat main-rating">
+              <div class="rating-circle">
+                <span class="rating-num" data-target="4.8" data-decimal="1">0</span>
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+              <span class="review-label">Average Rating</span>
+            </div>
+
+            <div class="review-stats-grid">
+              <div class="review-stat">
+                <div class="stat-icon positive">
+                  <i class="fas fa-thumbs-up"></i>
+                </div>
+                <div>
+                  <h4 class="counter" data-target="1248">0</h4>
+                  <span>Positive Reviews</span>
+                </div>
+              </div>
+
+              <div class="review-stat">
+                <div class="stat-icon negative">
+                  <i class="fas fa-thumbs-down"></i>
+                </div>
+                <div>
+                  <h4 class="counter" data-target="86">0</h4>
+                  <span>Negative Reviews</span>
+                </div>
+              </div>
+
+              <div class="review-stat satisfaction">
+                <div class="stat-icon satisfaction-icon">
+                  <i class="fas fa-smile"></i>
+                </div>
+                <div>
+                  <h4><span class="counter" data-target="94">0</span>%</h4>
+                  <span>Customer Satisfaction</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-reviews">
+            <h4>Recent Feedback</h4>
+            <div class="review-item">
+              <div class="reviewer-avatar">S</div>
+              <div class="review-content">
+                <div class="review-top">
+                  <strong>Sneha M.</strong>
+                  <div class="mini-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+                <p>"Absolutely loved the Chicken Biryani. Will order again!"</p>
+              </div>
+            </div>
+            <div class="review-item">
+              <div class="reviewer-avatar">K</div>
+              <div class="review-content">
+                <div class="review-top">
+                  <strong>Kabir K.</strong>
+                  <div class="mini-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <p>"Great pizza, but delivery took a bit longer than expected."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customers Overview -->
+      <section class="card customers-card fade-in" id="customers">
+        <div class="card-header">
+          <div>
+            <h3>Customer Insights</h3>
+            <p>Audience overview this month</p>
+          </div>
+          <button class="btn-outline">Export</button>
+        </div>
+        <div class="customers-grid" id="customersGrid">
+          <div class="customer-stat-card">
+            <div class="kpi-icon customers"><i class="fas fa-user-plus"></i></div>
+            <div>
+              <span class="kpi-label">New Customers</span>
+              <h3 class="kpi-value" data-target="384" data-prefix="">0</h3>
+              <div class="kpi-trend up"><i class="fas fa-arrow-up"></i><span>+18%</span></div>
+            </div>
+          </div>
+          <div class="customer-stat-card">
+            <div class="kpi-icon returning"><i class="fas fa-redo"></i></div>
+            <div>
+              <span class="kpi-label">Returning</span>
+              <h3 class="kpi-value" data-target="67" data-suffix="%">0</h3>
+              <div class="kpi-trend up"><i class="fas fa-arrow-up"></i><span>+4.2%</span></div>
+            </div>
+          </div>
+          <div class="customer-stat-card">
+            <div class="kpi-icon loyalty"><i class="fas fa-heart"></i></div>
+            <div>
+              <span class="kpi-label">Loyalty Members</span>
+              <h3 class="kpi-value" data-target="892" data-prefix="">0</h3>
+              <div class="kpi-trend up"><i class="fas fa-arrow-up"></i><span>+9.1%</span></div>
+            </div>
+          </div>
+          <div class="customer-stat-card">
+            <div class="kpi-icon avg-spend"><i class="fas fa-wallet"></i></div>
+            <div>
+              <span class="kpi-label">Avg. Spend</span>
+              <h3 class="kpi-value" data-target="420" data-prefix="₹">0</h3>
+              <div class="kpi-trend up"><i class="fas fa-arrow-up"></i><span>+2.8%</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section class="card settings-card fade-in" id="settings">
+        <div class="card-header">
+          <div>
+            <h3>Quick Settings</h3>
+            <p>Customize your dashboard experience</p>
+          </div>
+        </div>
+        <div class="settings-grid">
+          <div class="setting-item">
+            <div class="setting-info">
+              <i class="fas fa-bell"></i>
+              <div>
+                <strong>Order Notifications</strong>
+                <span>Get alerts for new orders</span>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-info">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email Reports</strong>
+                <span>Daily performance summary</span>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-info">
+              <i class="fas fa-chart-bar"></i>
+              <div>
+                <strong>Auto Refresh</strong>
+                <span>Update data every 5 minutes</span>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-info">
+              <i class="fas fa-moon"></i>
+              <div>
+                <strong>Dark Mode</strong>
+                <span>Toggle via header button</span>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="settingsDarkToggle" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="dashboard-footer">
+      <p>&copy; 2026 RasoiPro. Restaurant Business Performance Dashboard.</p>
+    </footer>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
